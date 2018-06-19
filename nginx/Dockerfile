@@ -1,4 +1,4 @@
-FROM nginx:1.13
+FROM danieldent/nginx-ssl-proxy
 LABEL maintainer="dornera@mit.edu"
 
 # EMBED THE DEFAULT CONFIG, THAT'S ALL FOLKS

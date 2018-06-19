@@ -44,7 +44,15 @@ services:
   web:
     build:
       context: ./nginx
+    restart: always
+    environment:
+      UPSTREAM: 127.0.0.1:8888
+      SERVERNAME: archives
+      EXTRANAMES: localhost
     ports:
-      - "8888:80"
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/etc/letsencrypt"
     depends_on:
       - app
