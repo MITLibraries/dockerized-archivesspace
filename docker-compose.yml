@@ -35,24 +35,18 @@ services:
       MYSQL_USER: as
       MYSQL_PASSWORD: as123
   solr:
-  #  build:
-  #   context: ./solr
-    image: archivesspace/solr:7.1
-    command: solr-create -p 8983 -c archivesspace -d /archivesspace
+    build:
+      context: ./solr
+    entrypoint:
+    - docker-entrypoint.sh
+    - solr-precreate
+    - archivesspace
     ports:
       - "8983:8983"
   web:
     build:
       context: ./nginx
-    restart: always
-    environment:
-      UPSTREAM: 127.0.0.1:8888
-      SERVERNAME: archives
-      EXTRANAMES: localhost
     ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - "/etc/letsencrypt"
+      - "8888:80"
     depends_on:
       - app
