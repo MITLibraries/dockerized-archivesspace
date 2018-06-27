@@ -19,11 +19,6 @@ services:
       APPCONFIG_FRONTEND_PROXY_URL: 'http://localhost:8888/staff/'
       APPCONFIG_OAI_PROXY_URL: 'http://localhost:8888/oai'
       APPCONFIG_PUBLIC_PROXY_URL: 'http://localhost:8888/'
-      # testing plugin initialization on startup
-    #  ASPACE_INITIALIZE_PLUGINS: 'newrelic'
-    #volumes:
-  #    - ./config.rb:/archivesspace/config/config.rb
-  #    - ./plugins/newrelic:/archivesspace/plugins/newrelic
   db:
     image: mysql:5.7
     command: --character-set-server=utf8 --collation-server=utf8_unicode_ci --innodb_buffer_pool_size=2G --innodb_buffer_pool_instances=2
